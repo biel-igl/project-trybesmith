@@ -1,6 +1,7 @@
 import { Product } from 'src/types/Product';
 import { ServiceResponse } from 'src/types/ServiceResponse';
-import ProductModel, { ProductInputtableTypes } from '../database/models/product.model';
+import ProductModel,
+{ ProductInputtableTypes, ProductSequelizeModel } from '../database/models/product.model';
 
 function validateParams({
   name,
@@ -26,6 +27,12 @@ const create = async (product: ProductInputtableTypes): Promise<ServiceResponse<
   return responseService;
 };
 
+const list = async ():Promise<ServiceResponse<ProductSequelizeModel[]>> => {
+  const products = await ProductModel.findAll();
+  return { status: 'SUCCESSFUL', data: products };
+};
+
 export default {
   create,
+  list,
 };

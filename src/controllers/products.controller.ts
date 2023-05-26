@@ -11,6 +11,12 @@ const create = async (req:Request, res:Response) => {
   return res.status(201).json(ServiceResponse.data);
 };
 
+const list = async (req:Request, res:Response) => {
+  const ServiceResponse = await productsServices.list();
+  return res.status(200).json(ServiceResponse.data);
+};
+
 export default {
   create,
+  list,
 };
