@@ -1,5 +1,5 @@
 export type OrderWhitProducts = {
   id: number;
   userId: number;
-  productId?: number[];
+  productIds?: number[];
 };
